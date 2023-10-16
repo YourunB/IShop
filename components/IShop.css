@@ -1,0 +1,82 @@
+﻿body {
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(124,196,255);
+  background: radial-gradient(circle, rgba(124,196,255,1) 0%, rgba(68,171,255,1) 50%, rgba(0,140,255,1) 100%);
+  color: rgb(64, 64, 64);
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.IShop {
+  border: solid 2px white;
+  padding: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  background: url('https://github.com/YourunB/Test1/blob/main/images/basket.png?raw=true') no-repeat;
+  background-size: contain;
+  animation: show-top 2s forwards;
+  cursor: default;
+}
+
+.IShop h3 {
+  font-weight: 700;
+  text-transform: uppercase;
+  transform: translateX(-110%);
+  animation: show-left 2s forwards;
+  animation-delay: 1s;
+}
+
+.IShop table {
+  border-collapse: collapse;
+  transform: translateY(110%);
+  animation: show-bottom 2s forwards;
+  animation-delay: 2s;
+  backdrop-filter: blur(3px);
+}
+
+.IShop thead {
+  text-transform: uppercase;
+  text-align: left;
+  border-bottom: 1px white solid;
+}
+
+.IShop table th {
+  padding-top: 10px;
+}
+
+@keyframes show-top {
+  0% {
+    transform: translateY(-100vh);
+    background-position: -100vw center;
+  }
+  100% {
+    transform: translateY(0);
+    box-shadow: 0 0 5px 0 white;
+    background-position: center center;
+  }
+}
+
+@keyframes show-left {
+  0% {
+    transform: translateX(-110%);
+    background: rgba(0,140,255,1);
+    border-radius: 10px;
+  }
+  100% {
+    transform: translateX(0);
+    color: white;
+  }
+}
+
+@keyframes show-bottom {
+  0% {
+    transform: translateY(110%);
+    background: rgba(0,140,255,1);
+    border-radius: 10px;
+  }
+  100% {transform: translateY(0);}
+}

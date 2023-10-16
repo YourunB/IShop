@@ -1,0 +1,6 @@
+[ 
+    {"code":1, "product":"TV LG 55", "price":1100, "url":"https://www.lg.com", "quantity":40, "image":"https://www.lg.com/us/images/tvs/md06084683/gallery/SM8100AUA_1100_v5.jpg"}, 
+    {"code":2, "product":"Fridge Bosch", "price":1800, "url":"https://www.bosch.com", "quantity":15, "image":"https://cdn.klykva.ru/upload/klykva_1/2/item_2537956/item_2537956.jpg"}, 
+    {"code":3, "product":"Laptop Lenovo", "price":1200, "url":"https://www.lenovo.com", "quantity":20, "image":"https://srtremont.ru/uploads/photos/noutbuk-lenovo-ideapad-330-15ast-81d6002gru_8fdf9f6996.jpg"},
+    {"code":4, "product":"Smartphone Samsung Galaxy", "price":1300, "url":"https://www.samsung.com", "quantity":35, "image":"https://www.notebookcheck.net/fileadmin/_processed_/d/6/csm_FRiizxaXsAEjm4R_e6f645a138.jpg"}
+]

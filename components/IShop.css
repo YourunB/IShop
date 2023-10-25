@@ -36,6 +36,7 @@
   animation: show-bottom 2s forwards;
   animation-delay: 2s;
   backdrop-filter: blur(3px);
+  min-width: 750px;
 }
 
 .IShop thead {

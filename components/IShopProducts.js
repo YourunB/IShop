@@ -9,13 +9,13 @@ class IShopProducts extends React.Component {
   };
 
   deleteProduct = () => {
-    this.props.deleteProduct(this);
+    if (confirm('Are you sure?')) this.props.deleteProduct(this);
   }
 
   render() {
 
     return (
-      <tr className={(this.props.selectedProduct!==this.props.code) ? 'IShopProducts' : 'IShopProducts checked'} onClick={this.checkedProductChanged}>
+      <tr className={(this.props.selectedProduct===this.props.code) ? 'IShopProducts checked' : 'IShopProducts'} onClick={this.checkedProductChanged}>
         <td className='IShopProducts__name'>{this.props.product}</td>
         <td><img className='IShopProducts__image' src={this.props.image} /></td>
         <td className='IShopProducts__price'>{this.props.price}</td>

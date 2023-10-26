@@ -8,20 +8,24 @@ class IShop extends React.Component {
 
   state = {
     selectedProduct:null,
+    selectedProductPrev:null,
     products:JSON.parse(JSON.stringify(this.props.products)),
   };
 
   seclectProduct = (number) => {
+    this.setState( {selectedProductPrev:this.state.selectedProduct} );
     this.setState( {selectedProduct:number} );
   }
-
+  
   deleteProduct = (product) => {
     for (let i = 0; i < this.state.products.length; i++) {
       if (this.state.products[i].code === product.props.code) {
         //delete this.state.products[i];
         this.state.products.splice(i, 1);
+        setTimeout(() => { this.setState( {selectedProduct:this.state.selectedProductPrev} ); }, 0); 
       }
     }
+    console.log(this.state.selectedProduct)
     console.log(this.state.products)
   }
 

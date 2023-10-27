@@ -8,7 +8,6 @@ class IShop extends React.Component {
 
   state = {
     selectedProduct:null,
-    selectedProductPrev:null,
     products:JSON.parse(JSON.stringify(this.props.products)),
   };
 
@@ -18,15 +17,13 @@ class IShop extends React.Component {
   }
   
   deleteProduct = (product) => {
-    for (let i = 0; i < this.state.products.length; i++) {
-      if (this.state.products[i].code === product.props.code) {
-        //delete this.state.products[i];
-        this.state.products.splice(i, 1);
-        setTimeout(() => { this.setState( {selectedProduct:this.state.selectedProductPrev} ); }, 0); 
+    const productsCopy = Array.from(this.state.products);
+    for (let i = 0; i < productsCopy.length; i++) {
+      if (productsCopy[i].code === product.props.code) {
+        productsCopy.splice(i, 1);
       }
     }
-    console.log(this.state.selectedProduct)
-    console.log(this.state.products)
+    this.setState( {products:Array.from(productsCopy)} )
   }
 
   render() {

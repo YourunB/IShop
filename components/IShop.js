@@ -12,7 +12,6 @@ class IShop extends React.Component {
   };
 
   seclectProduct = (number) => {
-    this.setState( {selectedProductPrev:this.state.selectedProduct} );
     this.setState( {selectedProduct:number} );
   }
   

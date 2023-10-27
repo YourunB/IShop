@@ -19,7 +19,7 @@ class IShop extends React.Component {
   deleteProduct = (product) => {
     const productsCopy = JSON.parse(JSON.stringify(this.state.products));
     const result = productsCopy.filter((item) => item.code !== product.props.code);
-    this.setState( {products:JSON.parse(JSON.stringify(result))} )
+    this.setState( {products:result} )
   }
 
   render() {

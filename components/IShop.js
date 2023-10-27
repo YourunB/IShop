@@ -17,13 +17,13 @@ class IShop extends React.Component {
   }
   
   deleteProduct = (product) => {
-    const productsCopy = Array.from(this.state.products);
+    const productsCopy = JSON.parse(JSON.stringify(this.state.products));
     for (let i = 0; i < productsCopy.length; i++) {
       if (productsCopy[i].code === product.props.code) {
         productsCopy.splice(i, 1);
       }
     }
-    this.setState( {products:Array.from(productsCopy)} )
+    this.setState( {products:JSON.parse(JSON.stringify(productsCopy))} )
   }
 
   render() {

@@ -13,6 +13,10 @@ class IShopProducts extends React.Component {
     if (confirm('Are you sure?')) this.props.deleteProduct(this);
   }
 
+  editProduct = () => {
+    this.props.editProduct();
+  }
+
   render() {
 
     return (
@@ -22,7 +26,10 @@ class IShopProducts extends React.Component {
         <td className='IShopProducts__price'>{this.props.price}</td>
         <td><a href={this.props.url} target='_blank'>{this.props.url}</a></td>
         <td>{this.props.quantity}</td>
-        <td><button onClick={this.deleteProduct}>Remove</button></td>
+        <td>
+          <button disabled={this.props.blockedButtons} onClick={this.editProduct}>Edit</button>
+          <button disabled={this.props.blockedButtons} onClick={this.deleteProduct}>Remove</button>
+        </td>
       </tr>
     );
 

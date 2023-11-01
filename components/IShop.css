@@ -54,42 +54,6 @@
   gap: 10px;
 }
 
-.IShop__info h3 {text-align: center;}
-.IShop__info p {
-  text-align: center;
-  font-weight: 700;
-  color: rgb(188, 20, 20);
-}
-
-.IShop__edit_conatiner {
-  display: grid;
-  grid-template-columns: 70px 200px 100px;
-  gap: 5px;
-}
-
-.IShop__edit_conatiner input {
-  background: none;
-  color: white;
-  font-weight: 700;
-  border: none;
-  border-bottom: 2px solid white;
-  outline: none;
-}
-
-.IShop__edit_conatiner_error {
-  color: rgb(188, 20, 20);
-  font-weight: 700;
-}
-
-.IShop__edit_control {
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.unvisible {display: none;}
-
 @keyframes show-top {
   0% {
     transform: translateY(-100vh);

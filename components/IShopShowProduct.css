@@ -1,0 +1,29 @@
+.IShopShowProduct {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.IShopShowProduct h3 {
+  text-align: center;
+  width: 100%;
+}
+
+.IShopShowProduct p {
+  width: 100%;
+  text-align: center;
+  font-weight: 700;
+  color: rgb(188, 20, 20);
+}
+
+.IShopShowProduct img {
+  border-radius: 3px;
+  height: 200px;
+  width: 300px;
+  object-fit: contain;
+  background: white;
+  transform: translateX(-200%);
+  animation: show-left 2s forwards;
+}
+
+.unvisible {display: none;}

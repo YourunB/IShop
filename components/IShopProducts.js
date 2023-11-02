@@ -5,7 +5,10 @@ import './IShopProducts.css';
 class IShopProducts extends React.Component {
 
   checkedProductChanged = () => {
-    this.props.selectedProductChange(this.props.code);
+    if (this.props.selectedProductBlock === false) {
+      this.props.selectedProductChange(this.props.code);
+      this.props.editProduct(false);
+    }
   };
 
   deleteProduct = event => {
@@ -13,8 +16,11 @@ class IShopProducts extends React.Component {
     if (confirm('Are you sure?')) this.props.deleteProduct(this);
   }
 
-  editProduct = () => {
-    this.props.editProduct();
+  editProduct = event => {
+    event.stopPropagation();
+    this.props.selectedProductChange(this.props.code);
+    this.props.editProduct(true);
+    this.props.addProduct(false);
   }
 
   render() {

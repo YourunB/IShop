@@ -10,15 +10,20 @@ class IShop extends React.Component {
 
   state = {
     selectedProduct:null,
+    selectedProductBlock:false,
     editingProduct:false,
     blockedButtons:false,
-    blockedButtonSave:false,
+    addedProduct:false,
 
     products:JSON.parse(JSON.stringify(this.props.products)),
   };
 
   seclectProduct = (number) => {
-    this.setState( {selectedProduct:number} );
+    if (this.state.selectedProductBlock === false) this.setState( {selectedProduct:number} );
+  }
+
+  seclectProductBlock = (bool) => {
+    this.setState( {selectedProductBlock:bool} );
   }
   
   deleteProduct = (product) => {
@@ -27,8 +32,22 @@ class IShop extends React.Component {
     this.setState( {products:result} )
   }
 
-  editProduct = () => {
-    this.setState( {editingProduct:true} )
+  editProduct = (bool) => {
+    this.setState( {editingProduct:bool} )
+  }
+
+  blockButtons = (bool) => {
+    this.setState( {blockedButtons:bool} );
+  }
+
+  addProduct = (bool) => {
+    this.setState( {addedProduct:bool} );
+    this.editProduct(true);
+  }
+
+  addProductAndSelectReset = (bool) => {
+    this.setState( {addedProduct:bool, selectedProduct:null} );
+    this.editProduct(true);
   }
 
   render() {
@@ -41,6 +60,9 @@ class IShop extends React.Component {
       deleteProduct={this.deleteProduct}
       editProduct={this.editProduct}
       blockedButtons={this.state.blockedButtons}
+      selectedProductBlock={this.state.selectedProductBlock}
+      addedProduct={this.state.addedProduct}
+      addProduct={this.addProduct}
       />
     );
 
@@ -49,6 +71,7 @@ class IShop extends React.Component {
       price={(this.state.selectedProduct !== null) ? this.state.products[this.state.selectedProduct].price : ''}
       image={(this.state.selectedProduct !== null) ? this.state.products[this.state.selectedProduct].image : ''}
       selectedProduct={this.state.selectedProduct}
+      editingProduct={this.state.editingProduct}
     />
 
     const productEdit=<IShopEditProduct
@@ -57,6 +80,11 @@ class IShop extends React.Component {
       url={(this.state.selectedProduct !== null) ? this.state.products[this.state.selectedProduct].url : ''}
       quantity={(this.state.selectedProduct !== null) ? this.state.products[this.state.selectedProduct].quantity : ''}
       selectedProduct={this.state.selectedProduct}
+      editingProduct={this.state.editingProduct}
+      blockButtons={this.blockButtons}
+      selectedProductBlock={this.state.selectedProductBlock}
+      seclectProductBlock={this.seclectProductBlock}
+      addedProduct={this.state.addedProduct}
     />
 
     return (
@@ -77,7 +105,7 @@ class IShop extends React.Component {
             {productsCode}
           </tbody>
         </table>
-        <button disabled={this.state.blockedButtons}>New product</button>
+        <button disabled={this.state.blockedButtons} onClick={() => this.addProductAndSelectReset(true)}>New product</button>
         {productShow}
         {productEdit}
       </div>

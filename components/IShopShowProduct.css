@@ -26,4 +26,10 @@
   animation: show-left 2s forwards;
 }
 
+.IShopEditProduct__controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
 .unvisible {display: none;}

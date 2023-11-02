@@ -123,6 +123,7 @@ class IShop extends React.Component {
       seclectProductBlock={this.seclectProductBlock}
       addedProduct={this.state.addedProduct}
       saveProduct={this.saveProduct}
+      editProduct={this.editProduct}
     />
 
     return (

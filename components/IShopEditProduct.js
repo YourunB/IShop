@@ -58,6 +58,7 @@ class IShopEditProduct extends React.Component {
     this.setState( {url:this.props.url, urlError:''} );
     this.setState( {quantity:this.props.quantity, quantityError:''} );
     this.checkButtonSave();
+    this.props.editProduct(false);
   }
 
   saveProduct = () => {

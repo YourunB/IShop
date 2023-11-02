@@ -81,10 +81,12 @@ class IShopEditProduct extends React.Component {
       return (
         <div className={(this.props.editingProduct === true) ? 'IShopEditProduct' : 'IShopEditProduct unvisible'}>
           <h3>{(this.props.addedProduct === true) ? 'Add New Product' : 'Edit existing Product'}</h3>
-          <span>Name: </span><input onInput={ () => {this.checkInput('productError'); this.blockButtons(true)} } onChange={ () => this.changeText('product')} value={this.state.product}></input><span className='IShopEditProduct__error'>{this.state.productError}</span>
-          <span>Price: </span><input type='number' onInput={ () => {this.checkInput('priceError'); this.blockButtons(true)} } onChange={ () => this.changeText('price')} value={this.state.price}></input><span className='IShopEditProduct__error'>{this.state.priceError}</span>
-          <span>URL: </span><input onInput={ () => {this.checkInput('urlError'); this.blockButtons(true)} } onChange={ () => this.changeText('url')} value={this.state.url}></input><span className='IShopEditProduct__error'>{this.state.urlError}</span>
-          <span>Quantity: </span><input type='number' onInput={ () => {this.checkInput('quantityError'); this.blockButtons(true)} } onChange={ () => this.changeText('quantity')} value={this.state.quantity}></input><span className='IShopEditProduct__error'>{this.state.quantityError}</span>
+          <div className='IShopEditProduct__container'>
+            <span>Name: </span><input onInput={ () => {this.checkInput('productError'); this.blockButtons(true)} } onChange={ () => this.changeText('product')} value={this.state.product}></input><span className='IShopEditProduct__error'>{this.state.productError}</span>
+            <span>Price: </span><input type='number' onInput={ () => {this.checkInput('priceError'); this.blockButtons(true)} } onChange={ () => this.changeText('price')} value={this.state.price}></input><span className='IShopEditProduct__error'>{this.state.priceError}</span>
+            <span>URL: </span><input onInput={ () => {this.checkInput('urlError'); this.blockButtons(true)} } onChange={ () => this.changeText('url')} value={this.state.url}></input><span className='IShopEditProduct__error'>{this.state.urlError}</span>
+            <span>Quantity: </span><input type='number' onInput={ () => {this.checkInput('quantityError'); this.blockButtons(true)} } onChange={ () => this.changeText('quantity')} value={this.state.quantity}></input><span className='IShopEditProduct__error'>{this.state.quantityError}</span>
+          </div>
           <div className='IShopEditProduct__controls'>
             <button onClick={() => this.saveProduct(this)} disabled={this.state.blockedButtonSave}>{(this.props.addedProduct === true) ? 'Add' : 'Save'}</button>
             <button onClick={this.cancelEdit}>Cancel</button>

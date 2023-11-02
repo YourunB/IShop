@@ -1,4 +1,19 @@
+.IShopEditProduct__container {
+  display: grid;
+  grid-template-columns: 100px 200px 100px;
+  gap: 10px;
+}
+
 .IShopEditProduct__error {
-    font-weight: 700;
-    color: rgb(193, 23, 23);
+  font-weight: 700;
+  color: rgb(193, 23, 23);
+}
+
+input {
+  color: white;
+  font-weight: 700;
+  border: none;
+  outline: none;
+  background: none;
+  border-bottom: 2px white solid;
 }

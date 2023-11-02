@@ -29,7 +29,7 @@ class IShop extends React.Component {
   deleteProduct = (product) => {
     const productsCopy = JSON.parse(JSON.stringify(this.state.products));
     const result = productsCopy.filter((item) => item.code !== product.props.code);
-    this.setState( {products:result} )
+    this.setState( {products:result, selectedProduct:null} );
   }
 
   editProduct = (bool) => {
@@ -50,8 +50,41 @@ class IShop extends React.Component {
     this.editProduct(true);
   }
 
-  saveProduct = () => {
+  saveProduct = (product, price, url, quantity, obj) => {
+    const productsCopy = this.state.products.slice(0);
+    if (this.state.addedProduct == true) {
+      const arr = {
+        code: productsCopy.length,
+        product: product,
+        price: price,
+        image: 'http://alfa.dev-top-it.ru/local/templates/alpha/img/nophoto.jpg',
+        url: url,
+        quantity: quantity,
+      }
+      productsCopy.push(arr);
+      this.setState( {products:productsCopy.slice(0), addedProduct:false}, () => {
+        this.blockButtons(false);
+        this.seclectProductBlock(false);
+        this.editProduct(false);
+        this.seclectProduct(null);
+      } );
+    }
 
+    if (this.state.addedProduct == false) {
+      productsCopy.forEach(element => {
+        if (element.code === this.state.selectedProduct) {
+          element.product = product;
+          element.price = price;
+          element.url = url;
+          element.quantity = quantity;
+        }
+      });
+      this.setState( {products:productsCopy.slice(0)}, () => {
+        this.blockButtons(false);
+        this.seclectProductBlock(false);
+        this.editProduct(false);
+      } );
+    }
   }
 
   render() {
@@ -89,7 +122,7 @@ class IShop extends React.Component {
       selectedProductBlock={this.state.selectedProductBlock}
       seclectProductBlock={this.seclectProductBlock}
       addedProduct={this.state.addedProduct}
-      saveProduct={this.state.saveProduct}
+      saveProduct={this.saveProduct}
     />
 
     return (

@@ -57,6 +57,11 @@ class IShopEditProduct extends React.Component {
     this.setState( {price:this.props.price, priceError:''} );
     this.setState( {url:this.props.url, urlError:''} );
     this.setState( {quantity:this.props.quantity, quantityError:''} );
+    this.checkButtonSave();
+  }
+
+  saveProduct = () => {
+    this.props.saveProduct(this.state.product, this.state.price, this.state.url, this.state.quantity, this);
   }
 
   componentDidUpdate(prevProps) {
@@ -81,7 +86,7 @@ class IShopEditProduct extends React.Component {
           <span>URL: </span><input onInput={ () => {this.checkInput('urlError'); this.blockButtons(true)} } onChange={ () => this.changeText('url')} value={this.state.url}></input><span className='IShopEditProduct__error'>{this.state.urlError}</span>
           <span>Quantity: </span><input type='number' onInput={ () => {this.checkInput('quantityError'); this.blockButtons(true)} } onChange={ () => this.changeText('quantity')} value={this.state.quantity}></input><span className='IShopEditProduct__error'>{this.state.quantityError}</span>
           <div className='IShopEditProduct__controls'>
-            <button disabled={this.state.blockedButtonSave}>{(this.props.addedProduct === true) ? 'Add' : 'Save'}</button>
+            <button onClick={() => this.saveProduct(this)} disabled={this.state.blockedButtonSave}>{(this.props.addedProduct === true) ? 'Add' : 'Save'}</button>
             <button onClick={this.cancelEdit}>Cancel</button>
           </div>
         </div>

@@ -13,7 +13,11 @@ class IShopProducts extends React.Component {
 
   deleteProduct = event => {
     event.stopPropagation();
-    if (confirm('Are you sure?')) this.props.deleteProduct(this);
+    if (confirm('Are you sure?')) {
+      this.props.deleteProduct(this);
+      this.props.addProduct(false);
+      this.props.editProduct(false);
+    }
   }
 
   editProduct = event => {
@@ -21,10 +25,6 @@ class IShopProducts extends React.Component {
     this.props.selectedProductChange(this.props.code);
     this.props.editProduct(true);
     this.props.addProduct(false);
-  }
-
-  saveProduct = () => {
-    
   }
 
   render() {

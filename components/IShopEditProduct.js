@@ -36,13 +36,13 @@ class IShopEditProduct extends React.Component {
 
   checkInput = (field) => {
     this.seclectProductBlock(true);
-    if (event.target.value.length === 0) {
-      this.setState( {[field]:' Error Input'} );
-      this.blockButtonSave(true);
-    } else {
-      this.setState( {[field]:''} );
-      this.blockButtonSave(false);
-    }
+    if (event.target.value.length === 0) this.setState( {[field]:' Error Input'}, () => {this.checkButtonSave()} );
+    else this.setState( {[field]:''}, () => {this.checkButtonSave()} );
+  }
+
+  checkButtonSave = () => {
+    if (this.state.product === '' || this.state.price === '' || this.state.url === '' || this.state.quantity === '') this.blockButtonSave(true);
+    else this.blockButtonSave(false);
   }
   
   blockButtonSave = (bool) => {
@@ -66,9 +66,8 @@ class IShopEditProduct extends React.Component {
         price:this.props.price, priceError:'',
         url:this.props.url, urlError:'',
         quantity:this.props.quantity, quantityError:'',
-      } );
+      }, () => this.checkButtonSave() );
       this.blockButtons(false);
-      this.blockButtonSave(false);
     }
    }
 

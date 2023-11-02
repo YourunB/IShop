@@ -23,6 +23,10 @@ class IShopProducts extends React.Component {
     this.props.addProduct(false);
   }
 
+  saveProduct = () => {
+    
+  }
+
   render() {
 
     return (

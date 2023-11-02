@@ -50,6 +50,10 @@ class IShop extends React.Component {
     this.editProduct(true);
   }
 
+  saveProduct = () => {
+
+  }
+
   render() {
 
     const productsCode=this.state.products.map( v => <IShopProducts 
@@ -85,6 +89,7 @@ class IShop extends React.Component {
       selectedProductBlock={this.state.selectedProductBlock}
       seclectProductBlock={this.seclectProductBlock}
       addedProduct={this.state.addedProduct}
+      saveProduct={this.state.saveProduct}
     />
 
     return (

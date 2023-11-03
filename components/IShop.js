@@ -55,8 +55,13 @@ class IShop extends React.Component {
   saveProduct = (product, price, url, quantity, obj) => {
     const productsCopy = JSON.parse(JSON.stringify(this.state.products));
     if (this.state.addedProduct == true) {
+      const codeNew = () => {
+          const arr = [];
+          this.state.products.forEach(element => arr.push(element.code));
+          return Math.max(...arr) + 1;
+      }
       const arr = {
-        code: productsCopy.length,
+        code: codeNew(),
         product: product,
         price: price,
         image: 'http://alfa.dev-top-it.ru/local/templates/alpha/img/nophoto.jpg',

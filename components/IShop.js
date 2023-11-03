@@ -2,7 +2,7 @@
 
 import './IShop.css';
 
-import IShopProducts from './IShopProducts';
+import IShopProduct from './IShopProduct';
 import IShopShowProduct from './IShopShowProduct';
 import IShopEditProduct from './IShopEditProduct';
 
@@ -27,9 +27,11 @@ class IShop extends React.Component {
   }
   
   deleteProduct = (product) => {
-    const productsCopy = JSON.parse(JSON.stringify(this.state.products));
-    const result = productsCopy.filter((item) => item.code !== product.props.code);
-    this.setState( {products:result, selectedProduct:null} );
+    this.setState( {selectedProduct:null} )
+    this.editProduct(false);
+    const result = this.state.products.filter((item) => item.code !== product.props.code);
+    for (let i = 0; i < result.length; i++) { result[i].code = i; }
+    this.setState( {products:result.slice(0)} );
   }
 
   editProduct = (bool) => {
@@ -51,7 +53,7 @@ class IShop extends React.Component {
   }
 
   saveProduct = (product, price, url, quantity, obj) => {
-    const productsCopy = this.state.products.slice(0);
+    const productsCopy = JSON.parse(JSON.stringify(this.state.products));
     if (this.state.addedProduct == true) {
       const arr = {
         code: productsCopy.length,
@@ -62,7 +64,7 @@ class IShop extends React.Component {
         quantity: quantity,
       }
       productsCopy.push(arr);
-      this.setState( {products:productsCopy.slice(0), addedProduct:false}, () => {
+      this.setState( {products:JSON.parse(JSON.stringify(productsCopy)), addedProduct:false}, () => {
         this.blockButtons(false);
         this.seclectProductBlock(false);
         this.editProduct(false);
@@ -79,7 +81,7 @@ class IShop extends React.Component {
           element.quantity = quantity;
         }
       });
-      this.setState( {products:productsCopy.slice(0)}, () => {
+      this.setState( {products:JSON.parse(JSON.stringify(productsCopy))}, () => {
         this.blockButtons(false);
         this.seclectProductBlock(false);
         this.editProduct(false);
@@ -89,7 +91,7 @@ class IShop extends React.Component {
 
   render() {
 
-    const productsCode=this.state.products.map( v => <IShopProducts 
+    const productsCode=this.state.products.map( v => <IShopProduct 
       key={v.code}
       code={v.code} product={v.product} price={v.price} url={v.url} quantity={v.quantity} image={v.image}
       selectedProduct={this.state.selectedProduct}

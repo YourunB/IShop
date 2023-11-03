@@ -1,16 +1,16 @@
-﻿.IShopProducts {
+﻿.IShopProduct {
   border-radius: 5px;
   margin: 0;
   transition: 0.5s;
 }
 
-.IShopProducts__name {
+.IShopProduct__name {
   font-weight: 700;
   color: white;
   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
 }
 
-.IShopProducts__price {
+.IShopProduct__price {
   font-weight: 700;
   color: white;
   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
@@ -32,11 +32,11 @@ a:hover {
   transform: scale(1.02);
 }
 
-.IShopProducts td {
+.IShopProduct td {
   padding: 5px;
 }
 
-.IShopProducts__image {
+.IShopProduct__image {
   max-width: 100px;
   width: 100%;
   aspect-ratio: 16 / 9;
@@ -46,18 +46,18 @@ a:hover {
   transition: 1s;
 }
 
-.IShopProducts__image:hover {
+.IShopProduct__image:hover {
   transform: scale(2);
   box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2);
   cursor: zoom-in;
 }
 
-.IShopProducts td:first-child {
+.IShopProduct td:first-child {
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
 
-.IShopProducts td:last-child {
+.IShopProduct td:last-child {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }

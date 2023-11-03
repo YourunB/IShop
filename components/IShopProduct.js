@@ -1,8 +1,8 @@
 ﻿import React from 'react';
 
-import './IShopProducts.css';
+import './IShopProduct.css';
 
-class IShopProducts extends React.Component {
+class IShopProduct extends React.Component {
 
   checkedProductChanged = () => {
     if (this.props.selectedProductBlock === false) {
@@ -30,10 +30,10 @@ class IShopProducts extends React.Component {
   render() {
 
     return (
-      <tr className={(this.props.selectedProduct===this.props.code) ? 'IShopProducts checked' : 'IShopProducts'} onClick={this.checkedProductChanged}>
-        <td className='IShopProducts__name'>{this.props.product}</td>
-        <td><img className='IShopProducts__image' src={this.props.image} /></td>
-        <td className='IShopProducts__price'>{this.props.price}</td>
+      <tr className={(this.props.selectedProduct===this.props.code) ? 'IShopProduct checked' : 'IShopProduct'} onClick={this.checkedProductChanged}>
+        <td className='IShopProduct__name'>{this.props.product}</td>
+        <td><img className='IShopProduct__image' src={this.props.image} /></td>
+        <td className='IShopProduct__price'>{this.props.price}</td>
         <td><a href={this.props.url} target='_blank'>{this.props.url}</a></td>
         <td>{this.props.quantity}</td>
         <td>
@@ -47,4 +47,4 @@ class IShopProducts extends React.Component {
 
 }
 
-export default IShopProducts;
+export default IShopProduct;

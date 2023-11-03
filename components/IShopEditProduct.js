@@ -6,8 +6,6 @@ import './IShopEditProduct.css';
 class IShopEditProduct extends React.Component {
 
   static propTypes = {
-    product: PropTypes.string,
-    url: PropTypes.string,
     editingProduct:PropTypes.bool.isRequired,
     selectedProductBlock: PropTypes.bool.isRequired,
     seclectProductBlock: PropTypes.func.isRequired,
@@ -17,10 +15,10 @@ class IShopEditProduct extends React.Component {
   };
 
   state = {
-    product: this.props.product,
-    price: this.props.price,
-    url: this.props.url,
-    quantity: this.props.quantity,
+    product: (this.props.product !== null) ? this.props.product.product : '',
+    price: (this.props.product !== null) ? this.props.product.price: '',
+    url: (this.props.product !== null) ? this.props.product.url : '',
+    quantity: (this.props.product !== null) ? this.props.product.quantity : '',
 
     productError:'',
     priceError:'',
@@ -65,10 +63,12 @@ class IShopEditProduct extends React.Component {
     this.seclectProductBlock(false);
     this.blockButtons(false);
     this.blockButtonSave(false);
-    this.setState( {product:this.props.product, productError:''} );
-    this.setState( {price:this.props.price, priceError:''} );
-    this.setState( {url:this.props.url, urlError:''} );
-    this.setState( {quantity:this.props.quantity, quantityError:''} );
+    this.setState( {
+      product: (this.props.product !== null) ? this.props.product.product : '', productError:'',
+      price: (this.props.product !== null) ? this.props.product.price: '', productError:'',
+      url: (this.props.product !== null) ? this.props.product.url : '', productError:'',
+      quantity: (this.props.product !== null) ? this.props.product.quantity : '', productError:'',
+    } );
     this.checkButtonSave();
     this.props.editProduct(false);
   }
@@ -80,10 +80,10 @@ class IShopEditProduct extends React.Component {
   componentDidUpdate(prevProps) {
     if (this.props.product !== prevProps.product || this.props.price !== prevProps.price || this.props.url !== prevProps.url || this.props.quantity !== prevProps.quantity) {
       this.setState( {
-        product:this.props.product, productError:'',
-        price:this.props.price, priceError:'',
-        url:this.props.url, urlError:'',
-        quantity:this.props.quantity, quantityError:'',
+        product: (this.props.product !== null) ? this.props.product.product : '', productError:'',
+        price: (this.props.product !== null) ? this.props.product.price: '', productError:'',
+        url: (this.props.product !== null) ? this.props.product.url : '', productError:'',
+        quantity: (this.props.product !== null) ? this.props.product.quantity : '', productError:'',
       }, () => this.checkButtonSave() );
       this.blockButtons(false);
     }

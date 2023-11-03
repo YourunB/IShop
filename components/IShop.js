@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { element } from 'prop-types';
 
 import './IShop.css';
 
@@ -31,7 +31,6 @@ class IShop extends React.Component {
     this.setState( {selectedProduct:null} )
     this.editProduct(false);
     const result = this.state.products.filter((item) => item.code !== product.props.code);
-    for (let i = 0; i < result.length; i++) { result[i].code = i; }
     this.setState( {products:result.slice(0)} );
   }
 
@@ -54,8 +53,7 @@ class IShop extends React.Component {
   }
 
   saveProduct = (product, price, url, quantity, obj) => {
-    const productsCopy = this.state.products; //поверхностная копия
-    console.log(typeof productsCopy, productsCopy)
+    const productsCopy = JSON.parse(JSON.stringify(this.state.products));
     if (this.state.addedProduct == true) {
       const arr = {
         code: productsCopy.length,
@@ -108,18 +106,13 @@ class IShop extends React.Component {
     );
 
     const productShow=<IShopShowProduct
-      product={(this.state.selectedProduct !== null) ? this.state.products[this.state.selectedProduct].product : ''}
-      price={(this.state.selectedProduct !== null) ? this.state.products[this.state.selectedProduct].price : ''}
-      image={(this.state.selectedProduct !== null) ? this.state.products[this.state.selectedProduct].image : ''}
+      product={ (this.state.selectedProduct !== null) ? this.state.products.filter(item => item.code === this.state.selectedProduct)[0] : null}
       selectedProduct={this.state.selectedProduct}
       editingProduct={this.state.editingProduct}
     />
 
     const productEdit=<IShopEditProduct
-      product={(this.state.selectedProduct !== null) ? this.state.products[this.state.selectedProduct].product : ''}
-      price={(this.state.selectedProduct !== null) ? this.state.products[this.state.selectedProduct].price : ''}
-      url={(this.state.selectedProduct !== null) ? this.state.products[this.state.selectedProduct].url : ''}
-      quantity={(this.state.selectedProduct !== null) ? this.state.products[this.state.selectedProduct].quantity : ''}
+      product={ (this.state.selectedProduct !== null) ? this.state.products.filter(item => item.code === this.state.selectedProduct)[0] : null}
       selectedProduct={this.state.selectedProduct}
       editingProduct={this.state.editingProduct}
       blockButtons={this.blockButtons}

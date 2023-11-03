@@ -5,6 +5,17 @@ import './IShopEditProduct.css';
 
 class IShopEditProduct extends React.Component {
 
+  static propTypes = {
+    product: PropTypes.string,
+    url: PropTypes.string,
+    editingProduct:PropTypes.bool.isRequired,
+    selectedProductBlock: PropTypes.bool.isRequired,
+    seclectProductBlock: PropTypes.func.isRequired,
+    addedProduct: PropTypes.bool.isRequired,
+    saveProduct: PropTypes.func.isRequired,
+    editProduct: PropTypes.func.isRequired,
+  };
+
   state = {
     product: this.props.product,
     price: this.props.price,

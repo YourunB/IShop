@@ -54,7 +54,8 @@ class IShop extends React.Component {
   }
 
   saveProduct = (product, price, url, quantity, obj) => {
-    const productsCopy = this.state.products.slice(0);
+    const productsCopy = this.state.products; //поверхностная копия
+    console.log(typeof productsCopy, productsCopy)
     if (this.state.addedProduct == true) {
       const arr = {
         code: productsCopy.length,
@@ -65,7 +66,7 @@ class IShop extends React.Component {
         quantity: quantity,
       }
       productsCopy.push(arr);
-      this.setState( {products:productsCopy.slice(0), addedProduct:false}, () => {
+      this.setState( {products:productsCopy, addedProduct:false}, () => {
         this.blockButtons(false);
         this.seclectProductBlock(false);
         this.editProduct(false);
@@ -82,7 +83,7 @@ class IShop extends React.Component {
           element.quantity = quantity;
         }
       });
-      this.setState( {products:productsCopy.slice(0)}, () => {
+      this.setState( {products:productsCopy}, () => {
         this.blockButtons(false);
         this.seclectProductBlock(false);
         this.editProduct(false);

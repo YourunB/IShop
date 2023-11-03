@@ -1,8 +1,26 @@
 ﻿import React from 'react';
+import PropTypes from 'prop-types';
 
 import './IShopProduct.css';
 
 class IShopProduct extends React.Component {
+
+  static propTypes = {
+    code: PropTypes.number,
+    product: PropTypes.string,
+    price: PropTypes.number,
+    url: PropTypes.string,
+    quantity: PropTypes.number,
+    image: PropTypes.string,
+    selectedProduct: PropTypes.number,
+    selectedProductChange: PropTypes.func.isRequired,
+    deleteProduct: PropTypes.func.isRequired,
+    editProduct: PropTypes.func.isRequired,
+    blockedButtons: PropTypes.bool.isRequired,
+    selectedProductBlock: PropTypes.bool.isRequired,
+    addedProduct: PropTypes.bool.isRequired,
+    addProduct: PropTypes.func.isRequired,
+  };
 
   checkedProductChanged = () => {
     if (this.props.selectedProductBlock === false) {

@@ -1,4 +1,5 @@
 ﻿import React from 'react';
+import PropTypes from 'prop-types';
 
 import './IShop.css';
 
@@ -53,7 +54,7 @@ class IShop extends React.Component {
   }
 
   saveProduct = (product, price, url, quantity, obj) => {
-    const productsCopy = JSON.parse(JSON.stringify(this.state.products));
+    const productsCopy = this.state.products.slice(0);
     if (this.state.addedProduct == true) {
       const arr = {
         code: productsCopy.length,
@@ -64,7 +65,7 @@ class IShop extends React.Component {
         quantity: quantity,
       }
       productsCopy.push(arr);
-      this.setState( {products:JSON.parse(JSON.stringify(productsCopy)), addedProduct:false}, () => {
+      this.setState( {products:productsCopy.slice(0), addedProduct:false}, () => {
         this.blockButtons(false);
         this.seclectProductBlock(false);
         this.editProduct(false);
@@ -81,7 +82,7 @@ class IShop extends React.Component {
           element.quantity = quantity;
         }
       });
-      this.setState( {products:JSON.parse(JSON.stringify(productsCopy))}, () => {
+      this.setState( {products:productsCopy.slice(0)}, () => {
         this.blockButtons(false);
         this.seclectProductBlock(false);
         this.editProduct(false);

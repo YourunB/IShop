@@ -8,9 +8,7 @@ class IShopProduct extends React.Component {
   static propTypes = {
     code: PropTypes.number,
     product: PropTypes.string,
-    price: PropTypes.number,
     url: PropTypes.string,
-    quantity: PropTypes.number,
     image: PropTypes.string,
     selectedProduct: PropTypes.number,
     selectedProductChange: PropTypes.func.isRequired,
